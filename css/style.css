@@ -7,5 +7,13 @@ header {
   border: solid 1px black;
   width: 100%;
   height: 500px;
-  background: gray;
+  background: url('../images/background.png');
+  background-repeat: repeat-x;
+}
+
+#horse {
+  position: absolute;
+  background: url('../images/horse.png') no-repeat;
+  width: 100px;
+  height: 100px;
 }

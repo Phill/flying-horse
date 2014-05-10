@@ -6,7 +6,7 @@
 // Start the magic
 function init() {
   moveBackground(1);
-  moveHorseUpDown(450, 1);
+  moveHorseUpDown(450);
 }
 
 // Moves the background
@@ -17,16 +17,16 @@ function moveBackground(i) {
 }
 
 // Bounces the horse
-function moveHorseUpDown(pos, i) {
-  var speed  = 50;
-  var top    = 100;
-  var bottom = 450;
+function moveHorseUpDown(pos) {
+  var speed  = (Math.floor((pos / 400) * 100)) + 5;
+  var top    = 5;
+  var bottom = 343;
 
-  // Going up
-  if ( pos <= top ) posInc = speed;
+  if ( pos <= top )    dir = 'down';
+  if ( pos >= bottom ) dir = 'up';
 
-  // Going down
-  if ( pos >= bottom ) posInc = -(speed);
+  if ( dir == 'up' )   posInc = -(speed);
+  if ( dir == 'down' ) posInc = speed;
 
   // Increment position
   pos += posInc;
@@ -34,7 +34,7 @@ function moveHorseUpDown(pos, i) {
   // Move horse to position
   $('#horse').css({ top:pos });
 
-  setTimeout('moveHorseUpDown(' + pos + ',' + i + ')', 100);
+  setTimeout('moveHorseUpDown(' + pos + ')', 100);
 }
 
 // Where all the magic starts

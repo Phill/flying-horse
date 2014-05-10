@@ -9,22 +9,30 @@ function init() {
 }
 
 function moveBackground(i) {
-  i -= 10;
+  i -= 5;
   $('#game').css("background-position", i + "px top");
   setTimeout('moveBackground(' + i + ')', 50);
 }
 
-function moveHorseUpDown(y, i) {
-  if ( y <= 100 ) n = 50;
-  if ( y >= 490 ) n = -50;
+function moveHorseUpDown(pos, i) {
+  var speed  = 50 + (((250 / 490) * 100) / 5);
 
-  y += n;
+  var top    = 100;
+  var bottom = 450;
 
-  $('#horse').css({top:y});
+  // up
+  if ( pos <= top ) posInc = speed;
+
+  // down
+  if ( pos >= bottom ) posInc = -(speed);
+
+  pos += posInc;
+
+  $('#horse').css({top:pos});
 
   // if ( i < 1000 ) {
   //   i += 1;
-    setTimeout('moveHorseUpDown(' + y + ',' + i + ')', 100);
+    setTimeout('moveHorseUpDown(' + pos + ',' + i + ')', 100);
   // }
 }
 

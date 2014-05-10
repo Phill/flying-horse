@@ -1,45 +1,42 @@
-var startPosBackground = 1;
-var startPosHorse      = 490;
+/*
+ * Our Flying Horse
+ *
+ */
 
+// Start the magic
 function init() {
-  $('#game #horse').css({
-    top: 490,
-    left: 200
-  });
+  moveBackground(1);
+  moveHorseUpDown(450, 1);
 }
 
+// Moves the background
 function moveBackground(i) {
   i -= 5;
   $('#game').css("background-position", i + "px top");
   setTimeout('moveBackground(' + i + ')', 50);
 }
 
+// Bounces the horse
 function moveHorseUpDown(pos, i) {
-  var speed  = 50 + (((250 / 490) * 100) / 5);
-
+  var speed  = 50;
   var top    = 100;
   var bottom = 450;
 
-  // up
+  // Going up
   if ( pos <= top ) posInc = speed;
 
-  // down
+  // Going down
   if ( pos >= bottom ) posInc = -(speed);
 
+  // Increment position
   pos += posInc;
 
-  $('#horse').css({top:pos});
+  // Move horse to position
+  $('#horse').css({ top:pos });
 
-  // if ( i < 1000 ) {
-  //   i += 1;
-    setTimeout('moveHorseUpDown(' + pos + ',' + i + ')', 100);
-  // }
+  setTimeout('moveHorseUpDown(' + pos + ',' + i + ')', 100);
 }
 
-function startGame(x, y) {
-  moveBackground(x);
-  moveHorseUpDown(y, 1);
-}
-
+// Where all the magic starts
 init();
-startGame(startPosBackground, startPosHorse);
+

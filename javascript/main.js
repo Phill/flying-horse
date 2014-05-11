@@ -11,7 +11,7 @@ function init() {
 
 // Moves the background
 function moveBackground(i) {
-  i -= 1;
+  i -= 2;
   $('#game').css("background-position", i + "px top");
   setTimeout('moveBackground(' + i + ')', 100);
 }

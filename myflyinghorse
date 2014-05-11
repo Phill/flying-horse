@@ -1,4 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Sonsie+One|Ranchers|Henny+Penny|Griffy|Peralta|Ewert);
+
+rt url(http://fonts.googleapis.com/css?family=Sonsie+One|Ranchers|Henny+Penny|Griffy|Peralta|Ewert);
 
 body {
   background: black;
@@ -35,7 +36,7 @@ header h1 {
   height: 100px;
   top: 450px;
   left: 200px;
-  background: url('../images/flying-unicorn-tiny.gif') no-repeat;
+  background: url('../images/tiny-unicorn.gif') no-repeat;
 }
 
 #credits {
@@ -45,4 +46,3 @@ header h1 {
   margin: 10px;
   color: white;
 }
-

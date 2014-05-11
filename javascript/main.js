@@ -11,9 +11,9 @@ function init() {
 
 // Moves the background
 function moveBackground(i) {
-  i -= 5;
+  i -= 1;
   $('#game').css("background-position", i + "px top");
-  setTimeout('moveBackground(' + i + ')', 50);
+  setTimeout('moveBackground(' + i + ')', 100);
 }
 
 // Bounces the horse

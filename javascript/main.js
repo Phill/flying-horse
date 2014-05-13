@@ -18,7 +18,7 @@ function moveBackground(i) {
 
 // Bounces the horse
 function moveHorseUpDown(pos) {
-  var speed  = (Math.floor((pos / 400) * 100)) + 5;
+  var speed  = (Math.floor((pos / 400) * 100));
   var top    = 5;
   var bottom = 343;
 
@@ -39,4 +39,3 @@ function moveHorseUpDown(pos) {
 
 // Where all the magic starts
 init();
-

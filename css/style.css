@@ -25,7 +25,7 @@ header h1 {
   margin: 5px;
   border: solid 1px black;
   border-radius: 5px;
-  background: url('../images/background tile.jpg');
+  background: url('../images/background.jpg');
   background-repeat: repeat-x;
 }
 
@@ -35,7 +35,7 @@ header h1 {
   height: 100px;
   top: 450px;
   left: 200px;
-  background: url('../images/flying-unicorn-tiny.gif') no-repeat;
+  background: url('../images/unicorn.gif') no-repeat;
 }
 
 #credits {

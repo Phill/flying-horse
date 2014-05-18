@@ -78,4 +78,3 @@ function moveHorseDown() {
 
 // Where all the magic starts
 init();
-

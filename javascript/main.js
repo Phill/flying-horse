@@ -9,27 +9,24 @@ var dir = "down";
 // Start the magic
 function init() {
   moveBackground(1);
-// moveHorseUp(450);
   moveHorseDown();
-  keyboard(); 
+  keyboard();
 }
 
 function keyboard(){
   $("body").keydown(function (e){
     keyCode = parseInt(e.keyCode);
-    if (keyCode == 32) { 
+    if (keyCode == 32) {
       dir = "up";
-console.log("up");
-      moveHorseUp(pos); 
+      moveHorseUp(pos);
     }
   });
 
   $("body").keyup(function (e){
     keyCode = parseInt(e.keyCode);
-    if (keyCode == 32) { 
-      dir = "down";  
-console.log("down");
-    moveHorseDown(pos); 
+    if (keyCode == 32) {
+      dir = "down";
+      moveHorseDown(pos);
     }
   });
 }
@@ -37,12 +34,12 @@ console.log("down");
 function moveHorseUp() {
   var speed  = (Math.floor((pos / 400) * 100)) + 5;
   var top = 50;
- if (dir == "down") return;
+  if (dir == "down") return;
   if (pos <= top){
     return ;
-  } 
+  }
 
-   // Increment position
+  // Increment position
   pos -= speed;
 
   // Move horse to position
@@ -65,9 +62,9 @@ function moveHorseDown() {
   if (dir == "up") return;
   if (pos >= bottom){
     return ;
-  } 
+  }
 
-   // Increment position
+  // Increment position
   pos += speed;
 
   // Move horse to position
@@ -78,3 +75,4 @@ function moveHorseDown() {
 
 // Where all the magic starts
 init();
+

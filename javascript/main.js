@@ -9,6 +9,8 @@ var dir = "down";
 // Start the magic
 function init() {
   moveBackground(1);
+  addPillars();
+  moveForeground(300);
   moveHorseDown();
   keyboard();
 }
@@ -31,9 +33,37 @@ function keyboard() {
   });
 }
 
+// Moves the background
+function moveBackground(i) {
+  i -= 2;
+  $('#background').css("background-position", i + "px top");
+  setTimeout('moveBackground(' + i + ')', 100);
+}
+
+// Moves the foreground
+function moveForeground(i) {
+  i -= 8;
+  $('#foreground').css("left", i);
+  setTimeout('moveForeground(' + i + ')', 100);
+}
+
+function addPillars() {
+  pillar = 'images/pillar.png';
+  numPillars = Math.floor((Math.random() * 15) + 8);
+
+  for (n = 1; n <= numPillars; n++) {
+    $('#foreground').append('<img id="pillar-' + n + '" src="' + pillar + '">');
+    $('#pillar-' + n).css({
+      display: "inline-block",
+      marginTop: 200,
+      marginLeft: Math.floor((Math.random() * 200) + 200)
+    });
+  }
+}
+
 function moveHorseUp() {
   var speed = (Math.floor((pos / 400) * 100)) + 5;
-  var top = 50;
+  var top = 100;
 
   if (dir == "down") return;
 
@@ -52,17 +82,9 @@ function moveHorseUp() {
   setTimeout('moveHorseUp(' + pos + ')', 100);
 }
 
-// Moves the background
-function moveBackground(i) {
-  i -= 2;
-  $('#game').css("background-position", i + "px top");
-  setTimeout('moveBackground(' + i + ')', 100);
-}
-
-// Bounces the horse
 function moveHorseDown() {
   var speed = (Math.floor((pos / 400) * 100)) + 5;
-  var bottom = 343;
+  var bottom = 420;
 
   if (dir == "up") return;
 

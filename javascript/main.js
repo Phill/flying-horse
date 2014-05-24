@@ -13,8 +13,8 @@ function init() {
   keyboard();
 }
 
-function keyboard(){
-  $("body").keydown(function (e){
+function keyboard() {
+  $("body").keydown(function(e) {
     keyCode = parseInt(e.keyCode);
     if (keyCode == 32) {
       dir = "up";
@@ -22,7 +22,7 @@ function keyboard(){
     }
   });
 
-  $("body").keyup(function (e){
+  $("body").keyup(function(e) {
     keyCode = parseInt(e.keyCode);
     if (keyCode == 32) {
       dir = "down";
@@ -32,18 +32,22 @@ function keyboard(){
 }
 
 function moveHorseUp() {
-  var speed  = (Math.floor((pos / 400) * 100)) + 5;
+  var speed = (Math.floor((pos / 400) * 100)) + 5;
   var top = 50;
+
   if (dir == "down") return;
-  if (pos <= top){
-    return ;
+
+  if (pos <= top) {
+    return;
   }
 
   // Increment position
   pos -= speed;
 
   // Move horse to position
-  $('#horse').css({ top:pos });
+  $('#horse').css({
+    top: pos
+  });
 
   setTimeout('moveHorseUp(' + pos + ')', 100);
 }
@@ -57,22 +61,25 @@ function moveBackground(i) {
 
 // Bounces the horse
 function moveHorseDown() {
-  var speed  = (Math.floor((pos / 400) * 100)) + 5;
+  var speed = (Math.floor((pos / 400) * 100)) + 5;
   var bottom = 343;
+
   if (dir == "up") return;
-  if (pos >= bottom){
-    return ;
+
+  if (pos >= bottom) {
+    return;
   }
 
   // Increment position
   pos += speed;
 
   // Move horse to position
-  $('#horse').css({ top:pos });
+  $('#horse').css({
+    top: pos
+  });
 
   setTimeout('moveHorseDown(' + pos + ')', 100);
 }
 
 // Where all the magic starts
 init();
-

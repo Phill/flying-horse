@@ -16,7 +16,7 @@ header h1 {
   text-shadow: 0px 0px 50px white;
 }
 
-#game {
+#background {
   position: absolute;
   top: 100px;
   left: 5px;
@@ -25,8 +25,16 @@ header h1 {
   margin: 5px;
   border: solid 1px black;
   border-radius: 5px;
-  background: url('../images/background tile.jpg');
+  background: url('../images/background.jpg');
   background-repeat: repeat-x;
+}
+
+#foreground {
+  position: absolute;
+  top: 100px;
+  width: 10000px;
+  height: 500px;
+  margin: 5px;
 }
 
 #horse {
@@ -35,7 +43,11 @@ header h1 {
   height: 100px;
   top: 450px;
   left: 200px;
-  background: url('../images/flying-unicorn-tiny.gif') no-repeat;
+  background: url('../images/unicorn.gif') no-repeat;
+}
+
+.dont-touch {
+  position: relative;
 }
 
 #credits {

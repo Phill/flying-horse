@@ -44,6 +44,12 @@ header h1 {
   top: 450px;
   left: 200px;
   background: url('../images/unicorn.gif') no-repeat;
+  border: solid 1px red;
+}
+
+.dont-touch {
+  position: relative;
+  border: solid 1px red;
 }
 
 #credits {

@@ -12,7 +12,21 @@ function init() {
   addPillars();
   moveForeground(300);
   moveHorseDown();
+  collisionDetection();
   keyboard();
+}
+
+function collisionDetection() {
+  //console.log("horse: " + horsePos + " pillar: " + $('#pillar-2').offset().left);
+
+  $('.dont-touch').each(function(i, el) {
+    pillarPos = $(el).offset().left;
+    if (pillarPos >= 200 && pillarPos <= 300) {
+      console.log("collision!!!! " + $(el).attr('id'));
+    }
+  });
+
+  setTimeout('collisionDetection()', 100);
 }
 
 function keyboard() {
@@ -52,7 +66,7 @@ function addPillars() {
   numPillars = Math.floor((Math.random() * 15) + 8);
 
   for (n = 1; n <= numPillars; n++) {
-    $('#foreground').append('<img id="pillar-' + n + '" src="' + pillar + '">');
+    $('#foreground').append('<img class="dont-touch" id="pillar-' + n + '" src="' + pillar + '">');
     $('#pillar-' + n).css({
       display: "inline-block",
       marginTop: 200,

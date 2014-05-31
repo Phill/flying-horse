@@ -64,13 +64,9 @@ header h1 {
 
 #game-over {
   position: relative;
-  width: 200px;
-  height: 100px;
+  width: 400px;
+  height: 249px;
   margin: 200px auto;
-  color: red;
-  font-size: 20pt;
-  background: yellow;
-  border: solid 5px red;
-  border-radius: 15px; 
+  background: url('../images/Game over.png') no-repeat;
   z-index: 100;
 }

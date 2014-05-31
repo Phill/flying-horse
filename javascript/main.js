@@ -5,6 +5,9 @@
 
 var pos = 100;
 var dir = "down";
+var collision = false; 
+var pressed = false; 
+var okKeydown = true;
 
 // Start the magic
 function init() {
@@ -16,17 +19,33 @@ function init() {
   keyboard();
 }
 
+function gameOver() { 
+$("#game-over").css("display", "block"); 
+}
+
 function collisionDetection() {
+    if (collision == true) return;
   //console.log("horse: " + horsePos + " pillar: " + $('#pillar-2').offset().left);
 
   $('.dont-touch').each(function(i, el) {
-    pillarPos = $(el).offset().left;
-    if (pillarPos >= 200 && pillarPos <= 300) {
+    pillarLeft = $(el).offset().left;
+    pillarTop = $(el).offset().top; 
+    if (pillarLeft >= 200 && pillarLeft <= 300 && pillarTop <= (pos + 100)) {
       console.log("collision!!!! " + $(el).attr('id'));
+      collision = true; 
+      $("#horse").css("display", "none");
+      gameOver();  
     }
   });
 
   setTimeout('collisionDetection()', 100);
+}
+
+function timeOut(){
+  pressed = false;
+  okKeydown = false;
+   dir = "down";
+ console.log ("timeout");
 }
 
 function keyboard() {
@@ -34,14 +53,27 @@ function keyboard() {
     keyCode = parseInt(e.keyCode);
     if (keyCode == 32) {
       dir = "up";
+    if (pressed == false){
+      pressed = true; 
+   timeOutFunction = setTimeout('timeOut()', 1000);  
+}
+    if (pressed == true && okKeydown == true){
       moveHorseUp(pos);
+ console.log("going up");
+    } else {
+       dir = "down"; 
+      moveHorseDown(pos); 
+ console.log("going down");
+  }
     }
   });
 
   $("body").keyup(function(e) {
     keyCode = parseInt(e.keyCode);
     if (keyCode == 32) {
-      dir = "down";
+      dir = "down"; 
+      okKeydown = true;
+      clearTimeout(timeOutFunction); 
       moveHorseDown(pos);
     }
   });
@@ -49,6 +81,7 @@ function keyboard() {
 
 // Moves the background
 function moveBackground(i) {
+  if (collision == true) return; 
   i -= 2;
   $('#background').css("background-position", i + "px top");
   setTimeout('moveBackground(' + i + ')', 100);
@@ -56,6 +89,7 @@ function moveBackground(i) {
 
 // Moves the foreground
 function moveForeground(i) {
+if (collision == true) return; 
   i -= 8;
   $('#foreground').css("left", i);
   setTimeout('moveForeground(' + i + ')', 100);
@@ -76,6 +110,7 @@ function addPillars() {
 }
 
 function moveHorseUp() {
+if (collision == true) return; 
   var speed = (Math.floor((pos / 400) * 100)) + 5;
   var top = 100;
 
@@ -97,6 +132,7 @@ function moveHorseUp() {
 }
 
 function moveHorseDown() {
+if (collision == true) return; 
   var speed = (Math.floor((pos / 400) * 100)) + 5;
   var bottom = 420;
 

@@ -17,10 +17,19 @@ function init() {
   moveHorseDown();
   collisionDetection();
   keyboard();
+  horseSelector();
 }
 
 function gameOver() {
   $("#game-over").css("display", "block");
+  $("#restart-game").css("display", "block");
+}
+
+function horseSelector() {
+  $("#horse-selector img").on("click", function () { 
+     console.log('selected ' + $("#horse").attr("src"));
+     $("#horse").attr("src", $(this).attr("src"));
+  });
 }
 
 function collisionDetection() {

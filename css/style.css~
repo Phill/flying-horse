@@ -45,7 +45,7 @@ header h1 {
   height: 100px;
   top: 450px;
   left: 200px;
-  background: url('../images/unicorn.gif') no-repeat;
+  background: url('../images/flying-pony-1.gif') no-repeat;
   z-index: 3;
 }
 
@@ -56,17 +56,47 @@ header h1 {
 
 #credits {
   position: absolute;
-  top: 600px;
+  top: 620px;
+  left: 0px;
   font-family: 'Peralta', cursive;
-  margin: 10px;
   color: white;
 }
 
 #game-over {
-  position: relative;
+  position: absolute;
+  top: 200px; 
+  left: 450px;
   width: 400px;
   height: 249px;
-  margin: 200px auto;
   background: url('../images/Game over.png') no-repeat;
   z-index: 100;
 }
+
+#restart-game {
+  position: absolute;
+  display: none; 
+  top: 250px;
+  left: 550px;
+  font-family: 'peralta', cursive; 
+  font-size: 20pt;
+  margin: 200px auto;
+  z-index: 20;  
+}
+
+#restart-game a {
+
+}
+
+#horse-selector {
+  position: absolute;
+  top: 600px;
+  left: 700px;
+  z-index: 50;						
+}
+
+
+
+
+
+
+

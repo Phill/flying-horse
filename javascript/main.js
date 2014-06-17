@@ -26,9 +26,9 @@ function gameOver() {
 }
 
 function horseSelector() {
-  $("#horse-selector img").on("click", function () { 
-     console.log('selected ' + $("#horse").attr("src"));
-     $("#horse").attr("src", $(this).attr("src"));
+  $("#horse-selector img").on("click", function() {
+    console.log('selected ' + $("#horse").attr("src"));
+    $("#horse").css('background-image', 'url(' + $(this).attr("src") + ')');
   });
 }
 

@@ -34,16 +34,24 @@ function horseSelector() {
 
 function collisionDetection() {
   if (collision == true) return;
-  //console.log("horse: " + horsePos + " pillar: " + $('#pillar-2').offset().left);
 
   $('.dont-touch').each(function(i, el) {
     pillarLeft = $(el).offset().left;
     pillarTop = $(el).offset().top;
-    if (pillarLeft >= 200 && pillarLeft <= 300 && pillarTop <= (pos + 100)) {
-      console.log("collision!!!! " + $(el).attr('id'));
-      collision = true;
-      $("#horse").css("display", "none");
-      gameOver();
+    pillarBottom = $(el).height();
+
+    if (pillarTop < 110) {
+      if (pillarLeft >= 200 && pillarLeft <= 300 && pillarBottom >= pos) {
+        collision = true;
+        $("#horse").css("display", "none");
+        gameOver();
+      }
+    } else {
+      if (pillarLeft >= 200 && pillarLeft <= 300 && pillarTop <= (pos + 100)) {
+        collision = true;
+        $("#horse").css("display", "none");
+        gameOver();
+      }
     }
   });
 
@@ -107,16 +115,66 @@ function moveForeground(i) {
 }
 
 function addPillars() {
-  pillar = 'images/pillar.png';
-  numPillars = Math.floor((Math.random() * 15) + 8);
+  ops = [{
+    src: 'images/op-bell.png',
+    pos: 'top'
+  }, {
+    src: 'images/op-grapes.png',
+    pos: 'top'
+  }, {
+    src: 'images/op-plant.png',
+    pos: 'top'
+  }, {
+    src: 'images/op-thorn.png',
+    pos: 'top'
+  }, {
+    src: 'images/op-tree.png',
+    pos: 'top'
+  }, {
+    src: 'images/op-pillar.png',
+    pos: 'bottom',
+    height: 321
+  }, {
+    src: 'images/op-logs.png',
+    pos: 'bottom',
+    height: 177
+  }, {
+    src: 'images/op-bricks.png',
+    pos: 'bottom',
+    height: 247
+  }, {
+    src: 'images/op-hedge.png',
+    pos: 'bottom',
+    height: 246
+  }, {
+    src: 'images/op-plastic.png',
+    pos: 'bottom',
+    height: 228
+  }];
+  numOps = ops.length;
 
-  for (n = 1; n <= numPillars; n++) {
-    $('#foreground').append('<img class="dont-touch" id="pillar-' + n + '" src="' + pillar + '">');
+  opsToShow = Math.floor((Math.random() * 15) + 8);
+  posLeft = 400;
+
+  for (n = 1; n <= opsToShow; n++) {
+    toShow = ops[Math.floor((Math.random() * numOps))];
+
+    $('#foreground').append('<img class="dont-touch pos-' + toShow.pos + '" id="pillar-' + n + '" src="' + toShow.src + '">');
+
+    if (toShow.pos == 'bottom')
+      posTop = 500 - toShow.height;
+    else
+      posTop = 0;
+
     $('#pillar-' + n).css({
-      display: "inline-block",
-      marginTop: 200,
-      marginLeft: Math.floor((Math.random() * 200) + 200)
+      top: posTop,
+      left: posLeft,
+      display: 'block'
     });
+
+    lastPos = posLeft;
+    rndPos = Math.floor((Math.random() * 300) + 200)
+    posLeft = lastPos + rndPos;
   }
 }
 

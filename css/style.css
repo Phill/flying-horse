@@ -49,11 +49,6 @@ header h1 {
   z-index: 3;
 }
 
-.dont-touch {
-  position: relative;
-  z-index: 3;
-}
-
 #credits {
   position: absolute;
   top: 620px;
@@ -64,7 +59,7 @@ header h1 {
 
 #game-over {
   position: absolute;
-  top: 200px; 
+  top: 200px;
   left: 450px;
   width: 400px;
   height: 249px;
@@ -74,13 +69,13 @@ header h1 {
 
 #restart-game {
   position: absolute;
-  display: none; 
+  display: none;
   top: 250px;
   left: 550px;
-  font-family: 'peralta', cursive; 
+  font-family: 'peralta', cursive;
   font-size: 20pt;
   margin: 200px auto;
-  z-index: 20;  
+  z-index: 20;
 }
 
 #restart-game a {
@@ -91,12 +86,18 @@ header h1 {
   position: absolute;
   top: 600px;
   left: 700px;
-  z-index: 50;						
+  z-index: 50;
 }
 
+.dont-touch {
+  position: absolute;
+  z-index: 3;
+}
 
+.pos-top {
+  top: 5px;
+}
 
-
-
-
-
+.pos-bottom {
+  top: 500px;
+}

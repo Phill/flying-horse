@@ -8,16 +8,29 @@ var dir = "down";
 var collision = false;
 var pressed = false;
 var okKeydown = true;
+var started = true;
 
 // Start the magic
 function init() {
+  detectTheEnd();
   moveBackground(1);
-  addPillars();
   moveForeground(300);
   moveHorseDown();
   collisionDetection();
   keyboard();
-  horseSelector();
+}
+
+function detectTheEnd() {
+  lastPillar = $('.dont-touch:last-child');
+  pillarLeft = $(lastPillar).offset().left;
+  console.log("end " + pillarLeft); 
+  if (pillarLeft >= 50 && pillarLeft <= 150) stopTheWorld();
+  setTimeout('detectTheEnd()', 100);
+}
+
+function stopTheWorld() {
+  started = false;
+  $("#you-won").css("display", "block");
 }
 
 function gameOver() {
@@ -27,7 +40,7 @@ function gameOver() {
 
 function horseSelector() {
   $("#horse-selector img").on("click", function() {
-    console.log('selected ' + $("#horse").attr("src"));
+   console.log('selected ' + $("#horse").attr("src"));
     $("#horse").css('background-image', 'url(' + $(this).attr("src") + ')');
   });
 }
@@ -101,6 +114,7 @@ function keyboard() {
 // Moves the background
 function moveBackground(i) {
   if (collision == true) return;
+  if (started == false) return;
   i -= 2;
   $('#background').css("background-position", i + "px top");
   setTimeout('moveBackground(' + i + ')', 100);
@@ -109,6 +123,7 @@ function moveBackground(i) {
 // Moves the foreground
 function moveForeground(i) {
   if (collision == true) return;
+  if (started == false) return; 
   i -= 8;
   $('#foreground').css("left", i);
   setTimeout('moveForeground(' + i + ')', 100);
@@ -223,4 +238,12 @@ function moveHorseDown() {
 }
 
 // Where all the magic starts
-init();
+  $("#start-game").on("click", function (){ 
+  $(this).css("display","none");
+ init();
+});
+
+addPillars();
+horseSelector();
+
+

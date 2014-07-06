@@ -78,8 +78,25 @@ header h1 {
   z-index: 20;
 }
 
-#restart-game a {
+#start-game {
+  position: absolute;
+  top: 250px;
+  left: 550px;
+  font-family: 'peralta', cursive;
+  font-size: 20pt;
+  margin: 200px auto;
+  z-index: 20;
+}
 
+#you-won {
+  position: absolute;
+  display: none;
+  top: 250px;
+  left: 400px;
+  font-family: 'peralta', cursive;
+  font-size: 20pt;
+  margin: 200px auto;
+  z-index: 20;
 }
 
 #horse-selector {
